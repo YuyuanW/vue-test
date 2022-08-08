@@ -1,7 +1,7 @@
 <template>
     <div>
         change.vue
-
+        <Nav/>
     </div>
 </template>
 
