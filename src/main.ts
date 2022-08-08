@@ -19,3 +19,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+// 提交就很烦 git commit -m 'xxxx' --no-verify
