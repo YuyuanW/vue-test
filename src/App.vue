@@ -1,14 +1,28 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <!-- <h3>halo</h3> -->
+  <div>halo</div>
+    <hr/>
+    <router-view />
+    <hr/>
+    <Nav></Nav>
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+import Nav from '@/components/Nav.vue'
+export default Vue.extend({
+    name: "App",
+    components: { Nav }
+})
+</script>
+
 <style lang="scss">
+/* @import '~@/assets/styles/test.scss';
+body{
+  background: $color;
+} */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
