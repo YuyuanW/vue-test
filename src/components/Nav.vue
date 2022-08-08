@@ -1,6 +1,6 @@
 <template>
     <div class="nav">
-      <router-link to="/tags">标签<svg><use x-href="x"></use></svg></router-link>
+      <router-link to="/tags">标签<svg><use xlink:href="#chart"></use></svg></router-link>
       <router-link to="/change">记账</router-link>
       <router-link to="/money">统计</router-link>
     </div>
