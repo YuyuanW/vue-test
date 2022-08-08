@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="nav">
       <router-link to="/tags">标签</router-link>
       <router-link to="/change">记账</router-link>
       <router-link to="/money">统计</router-link>
@@ -12,3 +12,6 @@ export default Vue.extend({
     name : 'Nav'
 })
 </script>
+
+<style lang="scss" scoped>
+</style>

@@ -1,11 +1,7 @@
 <template>
   <div id="app">
-    <!-- <h3>halo</h3> -->
-  <div>halo</div>
-    <hr/>
+
     <router-view />
-    <hr/>
-    <Nav></Nav>
   </div>
 </template>
 
@@ -14,7 +10,7 @@ import Vue from 'vue'
 import Nav from '@/components/Nav.vue'
 export default Vue.extend({
     name: "App",
-    components: { Nav }
+    // components: { Nav }
 })
 </script>
 
@@ -23,6 +19,13 @@ export default Vue.extend({
 body{
   background: $color;
 } */
+
+body{
+  box-sizing: border-box;
+  margin:0px;
+  padding: 0px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
