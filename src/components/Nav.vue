@@ -1,8 +1,8 @@
 <template>
     <div class="nav">
-      <router-link to="/tags" class="routerItems"><Icon iconName="tags" /><p>标签</p></router-link>
-      <router-link to="/change" class="routerItems"><Icon iconName='money'/><p>记账</p></router-link>
-      <router-link to="/money" class="routerItems"><Icon iconName='chart'/><p>统计</p></router-link>
+      <router-link to="/tags" class="routerItems" active-class="highLight"><Icon iconName="tags" /><p>标签</p></router-link>
+      <router-link to="/change" class="routerItems" active-class="highLight"><Icon iconName='money'/><p>记账</p></router-link>
+      <router-link to="/money" class="routerItems" active-class="highLight"><Icon iconName='chart'/><p>统计</p></router-link>
     </div>
 </template>
 
@@ -29,6 +29,7 @@ export default Vue.extend({
     >a{
       text-decoration: none;
     }
+    
     > .routerItems{
       flex-grow:1;
 
@@ -57,6 +58,15 @@ export default Vue.extend({
         margin:0px;
       }
 
+    }
+
+    >.highLight{
+      >svg{
+        fill:red;
+      }
+      >p{
+        color:red;
+      }
     }
   }
 </style>
