@@ -1,5 +1,5 @@
 <template>
-    <svg><use v-bind:xlink:href="'#'+iconName" /></svg>
+    <svg class="icon"><use v-bind:xlink:href="'#'+iconName" /></svg>
 </template>
 
 <script lang="ts">
@@ -15,5 +15,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-
+    .icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
 </style>
