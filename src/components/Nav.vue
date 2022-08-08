@@ -8,10 +8,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import chart from '@/assets/icons/chart.svg'
-import tags from '@/assets/icons/tags.svg'
-import money from '@/assets/icons/money.svg'
-console.log(chart,tags,money)
+
+ let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
+  try {importAll(require.context('../assets/icons', true, /\.svg$/));} catch (error) {console.log(error);}
+
 export default Vue.extend({
     name : 'Nav'
     
