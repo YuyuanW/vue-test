@@ -82,15 +82,46 @@ export default Vue.extend({
             >button{
                 border:none;
                 background:none;
-
                 width:25%;
                 height:25%;
+
+                font-family: 'Source Han Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 22px;
+                text-align: center;
+                color: #000000;
+
+                padding-top:20px;
+                padding-bottom: 20px;
             }
             >.okButton{
-                border:1px solid red;
                 position: absolute;
                 height:50%;
             }
+            >button:nth-child(12){
+                background: #9A9A9A;
+            }
+            >button:nth-child(1){
+                background: #F2F2F2;
+            }
+            >button:nth-child(2),button:nth-child(5){
+                background: #E0E0E0;
+            }
+            >button:nth-child(3),button:nth-child(6),button:nth-child(9){
+                background: #D3D3D3;
+            }
+            >button:nth-child(4),button:nth-child(7),button:nth-child(10),button:nth-child(14){
+                background: #C1C1C1;
+            }
+            >button:nth-child(8),button:nth-child(11),button:nth-child(15){
+                background: #B8B8B8;
+            }
+            >button:nth-child(16){
+                background: #A9A9A9;
+            }
+
         }
     }
 
