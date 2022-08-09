@@ -22,6 +22,7 @@
                         <button>8</button>
                         <button>9</button>
                         <button class="okButton">OK</button>
+                        <button></button>
                         <button>0</button>
                         <button>00</button>
                         <button>.</button>
@@ -57,6 +58,7 @@ export default Vue.extend({
     }
 
     .numberChange{
+        
         >.numberOut{
             font-family: 'Consolas';
             font-style: normal;
@@ -76,19 +78,18 @@ export default Vue.extend({
             box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.25);
         }
         >.numPad{
-            display:flex;
-            /* flex-direction: row; */
-            flex-wrap: wrap;
+            position: relative;
             >button{
+                border:none;
+                background:none;
+
                 width:25%;
                 height:25%;
             }
             >.okButton{
                 border:1px solid red;
-                float:right;
-                height:200%;
-                width:25%;
-                
+                position: absolute;
+                height:50%;
             }
         }
     }
