@@ -19,10 +19,11 @@ export default Vue.extend({
        display: flex;
        flex-direction: column;
        height: 100vh;
-    }
-    .content{
-       
+       >  .content{
+       /* border:1px solid red; */
         flex-grow: 1;
         overflow: auto;
     }
+    }
+   
 </style>

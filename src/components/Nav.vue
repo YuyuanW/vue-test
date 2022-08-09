@@ -1,5 +1,5 @@
 <template>
-    <div class="nav">
+    <div class="navAll">
       <router-link to="/tags" class="routerItems" active-class="highLight"><Icon iconName="tags" /><p>标签</p></router-link>
       <router-link to="/change" class="routerItems" active-class="highLight"><Icon iconName='money'/><p>记账</p></router-link>
       <router-link to="/money" class="routerItems" active-class="highLight"><Icon iconName='chart'/><p>统计</p></router-link>
@@ -18,7 +18,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-  .nav{
+  .navAll{
     box-shadow: 0px 0px 2px rgb(0,0,0,0.25);
 
     display: flex;
