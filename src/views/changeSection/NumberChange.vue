@@ -1,4 +1,4 @@
-<template lang="pug">
+<template>
     <div class="numberChange">
                     <div class="numberOut">
                         <span>100</span>
