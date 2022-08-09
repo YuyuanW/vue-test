@@ -4,17 +4,27 @@
             <div class="changeLayout">
                 <TagChange/>
                 <NoteChange/>
+                <CateChange/>
                 <div class="numberChange">
-                    <div class="cateNum">
-                        <button class="cateSelected">
-                            支出
-                        </button>
-                        <button>
-                            收入
-                        </button>
+                    <div class="numberOut">
+                        <span>100</span>
                     </div>
                     <div class="numPad">
-                        123
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>删除</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button>6</button>
+                        <button>清空</button>
+                        <button>7</button>
+                        <button>8</button>
+                        <button>9</button>
+                        <button class="okButton">OK</button>
+                        <button>0</button>
+                        <button>00</button>
+                        <button>.</button>
                     </div>
                 </div>
             </div>
@@ -28,11 +38,12 @@ import Nav from '../Nav.vue'
 import Layout from './Layout.vue'
 import TagChange from '@/views/changeSection/TagChange.vue'
 import NoteChange from '../../views/changeSection/NoteChange.vue'
+import CateChange from '../../views/changeSection/CateChange.vue'
 
 // import Nav from '@/components/Nav.vue'
 export default Vue.extend({
     name: "Change",
-    components: { Nav, Layout, TagChange, NoteChange }
+    components: { Nav, Layout, TagChange, NoteChange, CateChange }
 })
 </script>
 
@@ -45,34 +56,44 @@ export default Vue.extend({
         flex-direction: column;
     }
 
-    .cateNum{
-        /* border:1px solid red;   */
-        background: #C4C4C4; 
-        display: flex;
-        flex-direction: row;
-         
-        /* justify-content: space-around; */
-        > button{
-            background: none;
-            border:none;
-            color:none;
-
-            font-family: 'Source Han Sans';
+    .numberChange{
+        >.numberOut{
+            font-family: 'Consolas';
             font-style: normal;
             font-weight: 400;
-            font-size: 24px;
+            font-size: 36px;
             line-height: 22px;
-            letter-spacing: -0.41px;
-            color: #000000;
+            color: #333333;
 
-            width:50%;
-            padding:20px;
+            background: #FFFFFF;
+            text-align: right;
+            /* float:right; */
+
+            padding-top:22px;
+            padding-bottom: 24px;
+            padding-right:16px;
+            /* border-bottom:2px solid black; */
+            box-shadow: inset 0px -2px 3px rgba(0, 0, 0, 0.25);
         }
-        .cateSelected{
-            border-bottom: 3px solid #333333;
+        >.numPad{
+            display:flex;
+            /* flex-direction: row; */
+            flex-wrap: wrap;
+            >button{
+                width:25%;
+                height:25%;
+            }
+            >.okButton{
+                border:1px solid red;
+                float:right;
+                height:200%;
+                width:25%;
+                
+            }
         }
-        
     }
+
+   
     
 
 </style>
