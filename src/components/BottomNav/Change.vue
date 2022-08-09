@@ -2,9 +2,12 @@
     <div class="changeSection">
         <Layout>
             <div class="changeLayout">
-                <TagChange></TagChange>
+                <TagChange/>
                 <div class="noteChange">
-                    备注
+                    <p class="noteInfo">备注</p>
+                    <label class="labelInfo">
+                        <input type="text" placeholder="在这里添加备注">
+                    </label>
                 </div>
                 <div class="numberChange">
                     <div class="cateNum">
@@ -35,10 +38,44 @@ export default Vue.extend({
 <style lang="scss" scoped>
     
     .changeLayout{
-        border:1px solid blue;
+        /* border:1px solid blue;    */
         height: 100%;
         display: flex;
         flex-direction: column;
+    }
+
+    .noteChange{
+        /* border:1px solid yellow; */
+        background: #F5F5F5;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content:flex-start;
+        align-content: center;
+        text-align: center;
+        > .noteInfo{
+            font-family: 'Source Han Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: #333333;
+            margin:0;
+            padding: 25px 16px;
+        }
+        > .labelInfo{
+            /* border:1px solid yellow; */  
+            flex-grow: 1;
+            display: flex;
+            
+            >input{
+                width:100%;
+                border:none;
+                background: inherit;
+                
+            }
+
+        }
     }
     
 
