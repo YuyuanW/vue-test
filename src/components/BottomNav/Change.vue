@@ -6,7 +6,12 @@
                 <NoteChange/>
                 <div class="numberChange">
                     <div class="cateNum">
-                        支出
+                        <button class="cateSelected">
+                            支出
+                        </button>
+                        <button>
+                            收入
+                        </button>
                     </div>
                     <div class="numPad">
                         123
@@ -40,7 +45,34 @@ export default Vue.extend({
         flex-direction: column;
     }
 
-    
+    .cateNum{
+        /* border:1px solid red;   */
+        background: #C4C4C4; 
+        display: flex;
+        flex-direction: row;
+         
+        /* justify-content: space-around; */
+        > button{
+            background: none;
+            border:none;
+            color:none;
+
+            font-family: 'Source Han Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 22px;
+            letter-spacing: -0.41px;
+            color: #000000;
+
+            width:50%;
+            padding:20px;
+        }
+        .cateSelected{
+            border-bottom: 3px solid #333333;
+        }
+        
+    }
     
 
 </style>
