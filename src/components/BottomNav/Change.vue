@@ -3,12 +3,7 @@
         <Layout>
             <div class="changeLayout">
                 <TagChange/>
-                <div class="noteChange">
-                    <p class="noteInfo">备注</p>
-                    <label class="labelInfo">
-                        <input type="text" placeholder="在这里添加备注">
-                    </label>
-                </div>
+                <NoteChange/>
                 <div class="numberChange">
                     <div class="cateNum">
                         支出
@@ -27,11 +22,12 @@ import Vue from 'vue'
 import Nav from '../Nav.vue'
 import Layout from './Layout.vue'
 import TagChange from '@/views/changeSection/TagChange.vue'
+import NoteChange from '../../views/changeSection/NoteChange.vue'
 
 // import Nav from '@/components/Nav.vue'
 export default Vue.extend({
     name: "Change",
-    components: { Nav, Layout, TagChange }
+    components: { Nav, Layout, TagChange, NoteChange }
 })
 </script>
 
@@ -44,39 +40,7 @@ export default Vue.extend({
         flex-direction: column;
     }
 
-    .noteChange{
-        /* border:1px solid yellow; */
-        background: #F5F5F5;
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        justify-content:flex-start;
-        align-content: center;
-        text-align: center;
-        > .noteInfo{
-            font-family: 'Source Han Sans';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 22px;
-            color: #333333;
-            margin:0;
-            padding: 25px 16px;
-        }
-        > .labelInfo{
-            /* border:1px solid yellow; */  
-            flex-grow: 1;
-            display: flex;
-            
-            >input{
-                width:100%;
-                border:none;
-                background: inherit;
-                
-            }
-
-        }
-    }
+    
     
 
 </style>
