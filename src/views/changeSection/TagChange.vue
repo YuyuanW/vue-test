@@ -25,7 +25,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
     .tagChange{
-        border:1px solid red;   
+        /* border:1px solid red;    */
         flex-grow: 1;
         display: flex;
         flex-direction: column;
