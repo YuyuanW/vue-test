@@ -19,7 +19,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
   .navAll{
-    box-shadow: 0px 0px 2px rgb(0,0,0,0.25);
+    /* box-shadow: 0px 0px 2px rgb(0,0,0,0.25); */
+    box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.25);
 
     display: flex;
     flex-direction: row;
@@ -42,7 +43,7 @@ export default Vue.extend({
         
         width:30px;
         height: 30px;
-        padding-top:4px;
+        padding-top:5px;
 
         fill:#999999 ;
       }
