@@ -4,7 +4,7 @@
             <div class="changeLayout">
                 <TagChange/>
                 <NoteChange/>
-                <CateChange/>
+                <CateChange name='yuyuan'/>
                 <NumberChange/>
             </div>
         </Layout>
