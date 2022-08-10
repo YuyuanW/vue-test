@@ -3,8 +3,7 @@
                     <p class="noteInfo">备注</p>
                     <label class="labelInfo">
                         <input type="text" 
-                        @input="onChange"
-                        :value = 'node'
+                        v-model="node"
                         placeholder="在这里添加备注">
                     </label>
     </div>
@@ -16,11 +15,6 @@ import Component from 'vue-class-component'
 @Component
 export default class NoteChange extends Vue{
     node = '';
-    onChange(e:InputEvent){
-        const note = (e.target as HTMLButtonElement).value
-        this.node = note
-        console.log(this.node)
-    }
 }
 </script>
 
