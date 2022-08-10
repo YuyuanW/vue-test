@@ -1,9 +1,9 @@
 <template>
     <div class="numberChange">
                     <div class="numberOut">
-                        <span>100</span>
+                        <span>{{output}}</span>
                     </div>
-                    <div class="numPad">
+                    <div class="numPad" @click="inputContent">
                         <button>1</button>
                         <button>2</button>
                         <button>3</button>
@@ -26,9 +26,18 @@
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({
-    name:'NumberChange'
-})
+import Component from 'vue-class-component';
+@Component
+export default class NumberChange extends Vue{
+    output='0';
+    inputContent(e:MouseEvent){
+        const buttonValue = e.target as HTMLButtonElement
+        if(buttonValue){
+            this.output +=  (buttonValue).textContent    
+        }
+        
+    }
+}
 </script>
 
 <style lang="scss" scoped>
