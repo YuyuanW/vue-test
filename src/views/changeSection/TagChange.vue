@@ -1,14 +1,7 @@
 <template>
     <div class="tagChange">
                     <ul class="tagsList">
-                        <li>衣1</li>
-                        <li>食2</li>
-                        <li>住3</li>
-                        <li>行4</li>
-                        <li>衣5</li>
-                        <li>食6</li>
-                        <li>住7</li>
-                        <li>行8</li>
+                        <li v-for="tag in tagList" :key="tag">{{tag}}</li>
                     </ul>
                     <button class="new">
                         新增标签
@@ -18,9 +11,21 @@
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({
-    name:'TagChange'
+
+const TagProps = Vue.extend({
+  props: {
+    tagList : [] || undefined
+  }
 })
+import Component from 'vue-class-component' 
+@Component
+
+export default class TagChange extends TagProps{
+    light = []
+    setLight(){
+
+    }
+}
 </script>
 
 <style lang="scss" scoped>
