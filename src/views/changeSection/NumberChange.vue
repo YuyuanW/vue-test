@@ -33,7 +33,40 @@ export default class NumberChange extends Vue{
     inputContent(e:MouseEvent){
         const buttonValue = e.target as HTMLButtonElement
         if(buttonValue){
-            this.output +=  (buttonValue).textContent    
+            const buttonText = (buttonValue).textContent
+            if(buttonText==='删除'){
+                if(this.output.length !== 1){
+                    this.output = this.output.slice(0,-1)
+                }if(this.output.length===1){
+                    this.output = '0'
+                }
+            }
+            else if(buttonText==='清空'){
+                this.output = '0'
+            }
+            else if(buttonText==='OK'){
+                window.confirm('提交成功')
+            }
+            else if(buttonText==='.'){
+                if(this.output.indexOf('.') !== (-1)){
+                    return 
+                }else{
+                    this.output += buttonText
+                }
+            }
+            else {
+                if(this.output==='0'){
+                    if(buttonText === '0' || buttonText === '00'){
+                        return this.output
+                    }else{
+                        this.output = buttonText !
+                    }
+                }
+                else{
+                    this.output += buttonText
+                }
+            }
+            return this.output     
         }
         
     }
