@@ -1,19 +1,44 @@
 <template>
     <div class="cateNum">
-                        <button class="cateSelected">
-                            支出
-                        </button>
-                        <button>
-                            收入
-                        </button>
-                    </div>
+        <button :class="type==='-' ? 'cateSelected' :''" @click="selectType('-')">
+            支出
+        </button>
+        <button :class="type==='+' ? 'cateSelected' : ''" @click="selectType('+')">
+            收入
+        </button>
+    </div>
 </template>
 
 <script lang="ts">
+// lang="ts"
+// Vue.extend
+import Component from 'vue-class-component';
 import Vue from 'vue'
-export default Vue.extend({
-    name:'CateChange'
-})
+@Component
+export default class CateChange extends Vue{
+    type='-';
+    selectType(type:string){
+        if(type!=='-' && type!=='+'){
+            throw new Error('type is unKnow!')
+        }
+        this.type = type
+        console.log(this.type)
+    }
+
+    // data(){
+    //     return(
+    //         {type:'-'}
+    //     )
+    // },
+    // methods:{
+    //     selectType(type){
+    //         if(type!=='-' && type!=='+'){
+    //             throw new Error('type is unKnow!')
+    //         }
+    //         this.type = type
+    //     }
+    // }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -41,6 +66,7 @@ export default Vue.extend({
             padding:20px;
         }
         .cateSelected{
+            border:none;
             border-bottom: 3px solid #333333;
         }
         
