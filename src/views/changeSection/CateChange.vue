@@ -2,7 +2,6 @@
     <div class="cateNum">
         <button :class="type==='-' ? 'cateSelected' :''" @click="selectType('-')">
             支出
-            {{nameU}}
         </button>
         <button :class="type==='+' ? 'cateSelected' : ''" @click="selectType('+')">
             收入
@@ -23,7 +22,7 @@ const GreetingProps = Vue.extend({
 @Component
 export default class CateChange extends GreetingProps{
     type='-';
-    nameU='hi'+this.name;
+    // nameU='hi'+this.name;
     selectType(type:string){
         if(type!=='-' && type!=='+'){
             throw new Error('type is unKnow!')
@@ -31,21 +30,10 @@ export default class CateChange extends GreetingProps{
         this.type = type
         console.log(this.type)
     };
+    mounted(){
+        // console.log(this.nameU)
+    }
      
-
-    // data(){
-    //     return(
-    //         {type:'-'}
-    //     )
-    // },
-    // methods:{
-    //     selectType(type){
-    //         if(type!=='-' && type!=='+'){
-    //             throw new Error('type is unKnow!')
-    //         }
-    //         this.type = type
-    //     }
-    // }
 }
 </script>
 
