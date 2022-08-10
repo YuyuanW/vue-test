@@ -2,16 +2,26 @@
     <div class="noteChange">
                     <p class="noteInfo">备注</p>
                     <label class="labelInfo">
-                        <input type="text" placeholder="在这里添加备注">
+                        <input type="text" 
+                        @input="onChange"
+                        :value = 'node'
+                        placeholder="在这里添加备注">
                     </label>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({
-    name:'NoteChange'
-})
+import Component from 'vue-class-component'
+@Component
+export default class NoteChange extends Vue{
+    node = '';
+    onChange(e:InputEvent){
+        const note = (e.target as HTMLButtonElement).value
+        this.node = note
+        console.log(this.node)
+    }
+}
 </script>
 
 <style lang="scss" scoped>
