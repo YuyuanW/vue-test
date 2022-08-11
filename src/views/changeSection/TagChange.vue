@@ -77,7 +77,8 @@ export default class TagChange extends TagProps{
 
             }   
             .light{
-                background: black;
+                background: #333;
+                color:#D9D9D9
             }
         }
         button{
