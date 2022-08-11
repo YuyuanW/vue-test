@@ -2,7 +2,7 @@
     <div class="changeSection">
         <Layout>
             <div class="changeLayout">
-                <TagChange v-bind:tagsList="['衣','食','住','行'] "/>
+                <TagChange :tag-Item="['衣','食','住','行'] "/>
                 <NoteChange/>
                 <CateChange/>
                 <NumberChange/>
@@ -21,24 +21,19 @@ import CateChange from '../../views/changeSection/CateChange.vue'
 import NumberChange from '../../views/changeSection/NumberChange.vue'
 
 // import Nav from '@/components/Nav.vue'
-export default  Vue.extend({
-    name:'Change',
-    components: { Nav, Layout, TagChange, NoteChange, CateChange, NumberChange },  
-})
+import Component from 'vue-class-component'
+@Component
+
+export default class Change extends Vue{
+    components= { Nav, Layout, TagChange, NoteChange, CateChange, NumberChange }
+}
 </script>
 
-<style lang="scss" scoped>
-    
+<style lang="scss" scoped> 
     .changeLayout{
         /* border:1px solid blue;    */
         height: 100%;
         display: flex;
         flex-direction: column;
     }
-
-    
-
-   
-    
-
 </style>
