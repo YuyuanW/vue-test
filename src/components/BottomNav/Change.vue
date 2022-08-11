@@ -2,7 +2,7 @@
     <div class="changeSection">
         <Layout>
             <div class="changeLayout">
-                <TagChange :tag-item="['衣','食','住','行'] "/>
+                <TagChange :tag-item.sync="tags"/>
                 <NoteChange/>
                 <CateChange/>
                 <NumberChange/>
@@ -27,7 +27,7 @@ import Component from 'vue-class-component'
 })
 
 export default class Change extends Vue{
-    
+    tags=['衣','食','住','行']
 }
 </script>
 

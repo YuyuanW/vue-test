@@ -5,7 +5,7 @@
                         :class="{light:light.indexOf(tag)>=0}" 
                         @click="setLight(tag)" >{{tag}}</li>
                     </ul>
-                    <button class="new">
+                    <button class="new" @click="addTag">
                         新增标签   
                     </button>
                 </div>
@@ -33,6 +33,15 @@ export default class TagChange extends TagProps{
         }else{
             this.light.push(tag)
         }
+    }
+    addTag(){
+        const tagName = window.prompt('请输入新增标签名：')
+        if(tagName === ''){
+            window.alert('标签名不能为空')
+        }else if(this.tagItem){
+            this.$emit('update:tagItem',[...this.tagItem,tagName])
+        }
+        
     }
 }
 </script>
