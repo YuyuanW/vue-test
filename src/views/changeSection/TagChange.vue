@@ -1,7 +1,7 @@
 <template>
     <div class="tagChange">
                     <ul class="tagsList">
-                        <li v-for="tag in tagsItem" :key="tag">{{tag}}</li>
+                        <li v-for="tag in tagItem" :key="tag">{{tag}}</li>
                     </ul>
                     <button class="new">
                         新增标签   
@@ -22,7 +22,10 @@ const TagProps = Vue.extend({
 @Component
 
 export default class TagChange extends TagProps{
-    tagsItem = this.tagItem
+    mounted(){
+       console.log(this.tagItem) 
+    }
+    // tagsItem = this.tagItem
     // light = []
     // setLight(){
 

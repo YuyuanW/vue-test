@@ -22,10 +22,12 @@ import NumberChange from '../../views/changeSection/NumberChange.vue'
 
 // import Nav from '@/components/Nav.vue'
 import Component from 'vue-class-component'
-@Component
+@Component({
+    components: { Nav, Layout, TagChange, NoteChange, CateChange, NumberChange }
+})
 
 export default class Change extends Vue{
-    components= { Nav, Layout, TagChange, NoteChange, CateChange, NumberChange }
+    
 }
 </script>
 
