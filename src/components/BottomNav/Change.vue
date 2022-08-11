@@ -2,7 +2,7 @@
     <div class="changeSection">
         <Layout>
             <div class="changeLayout">
-                <TagChange :tag-item.sync="tags"/>
+                <TagChange :tag-item.sync="tags" @xxx='yyy'/>
                 <NoteChange/>
                 <CateChange/>
                 <NumberChange/>
@@ -27,7 +27,10 @@ import Component from 'vue-class-component'
 })
 
 export default class Change extends Vue{
-    tags=['衣','食','住','行']
+    tags=['衣','食','住','行'];
+    yyy(a:string){
+        console.log(a)
+    }
 }
 </script>
 
