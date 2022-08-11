@@ -14,6 +14,7 @@
 // Vue.extend
 import Component from 'vue-class-component';
 import Vue from 'vue'
+import { Watch } from 'vue-property-decorator';
 const GreetingProps = Vue.extend({
   props: {
     name: String
@@ -22,17 +23,17 @@ const GreetingProps = Vue.extend({
 @Component
 export default class CateChange extends GreetingProps{
     type='-';
-    // nameU='hi'+this.name;
     selectType(type:string){
         if(type!=='-' && type!=='+'){
             throw new Error('type is unKnow!')
         }
         this.type = type
-        console.log(this.type)
     };
-    mounted(){
-        // console.log(this.nameU)
+    @Watch('type')
+    onTypeChanged(val: string) {
+        this.$emit('update',val)
     }
+
      
 }
 </script>

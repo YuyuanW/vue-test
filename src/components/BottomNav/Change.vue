@@ -35,10 +35,10 @@ export default class Change extends Vue{
         console.log(node)
     };
     onUpdateCate(cate:string){
-
+        console.log(cate)
     };
     onUpdateNum(num:string){
-
+        console.log(num)
     };
 
 }
