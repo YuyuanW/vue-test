@@ -22,23 +22,31 @@ import NumberChange from '../../views/changeSection/NumberChange.vue'
 
 // import Nav from '@/components/Nav.vue'
 import Component from 'vue-class-component'
+
+
+type Record = {
+    tag : string[],
+    node : string,
+    cate : string,
+    num : number
+}
 @Component({
     components: { Nav, Layout, TagChange, NoteChange, CateChange, NumberChange }
 })
-
 export default class Change extends Vue{
     tags=['衣','食','住','行'];
-    onUpdateTag(tag:string){
-        console.log(tag)
+    record:Record = {tag:[],node:'',cate:'-',num:0}
+    onUpdateTag(tag:string[]){
+        this.record.tag = tag
     };
     onUpdateNote(node:string){
-        console.log(node)
+        this.record.node = node
     };
     onUpdateCate(cate:string){
-        console.log(cate)
+        this.record.cate = cate
     };
     onUpdateNum(num:string){
-        console.log(num)
+        this.record.num = parseFloat(num)
     };
 
 }
