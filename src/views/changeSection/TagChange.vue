@@ -33,7 +33,7 @@ export default class TagChange extends TagProps{
         }else{
             this.light.push(tag)
         }
-        this.$emit('xxx',this.light)
+        this.$emit('update',this.light)
     }
     addTag(){
         const tagName = window.prompt('请输入新增标签名：')
