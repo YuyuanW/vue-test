@@ -2,7 +2,7 @@
     <div class="changeSection">
         <Layout>
             <div class="changeLayout">
-                <TagChange :tag-Item="['衣','食','住','行'] "/>
+                <TagChange :tag-item="['衣','食','住','行'] "/>
                 <NoteChange/>
                 <CateChange/>
                 <NumberChange/>

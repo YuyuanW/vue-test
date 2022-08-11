@@ -1,7 +1,9 @@
 <template>
     <div class="tagChange">
                     <ul class="tagsList">
-                        <li v-for="tag in tagItem" :key="tag">{{tag}}</li>
+                        <li v-for="tag in tagItem" :key="tag" 
+                        :class="{light:light.indexOf(tag)>=0}" 
+                        @click="setLight(tag)" >{{tag}}</li>
                     </ul>
                     <button class="new">
                         新增标签   
@@ -15,21 +17,23 @@ import Vue from 'vue'
 import Component from 'vue-class-component' 
 const TagProps = Vue.extend({
   props: {
-    tagItem : [String]
+    tagItem : [Array]
   }
 })
 
 @Component
 
 export default class TagChange extends TagProps{
-    mounted(){
-       console.log(this.tagItem) 
+    tagsItem = this.tagItem
+    light:string[] = []
+    setLight(tag:string){
+        const index = this.light.indexOf(tag)
+        if(index>=0){
+            this.light.splice(index,1)
+        }else{
+            this.light.push(tag)
+        }
     }
-    // tagsItem = this.tagItem
-    // light = []
-    // setLight(){
-
-    // }
 }
 </script>
 
@@ -72,6 +76,9 @@ export default class TagChange extends TagProps{
 
 
             }   
+            .light{
+                background: black;
+            }
         }
         button{
                 border:none;
