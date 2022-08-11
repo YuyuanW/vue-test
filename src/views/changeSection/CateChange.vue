@@ -1,9 +1,9 @@
 <template>
     <div class="cateNum">
-        <button :class="type==='-' ? 'cateSelected' :''" @click="selectType('-')">
+        <button :class="cate==='-' ? 'cateSelected' :''" @click="selectType('-')">
             支出
         </button>
-        <button :class="type==='+' ? 'cateSelected' : ''" @click="selectType('+')">
+        <button :class="cate==='+' ? 'cateSelected' : ''" @click="selectType('+')">
             收入
         </button>
     </div>
@@ -14,27 +14,20 @@
 // Vue.extend
 import Component from 'vue-class-component';
 import Vue from 'vue'
-import { Watch } from 'vue-property-decorator';
+// import { Watch } from 'vue-property-decorator';
 const GreetingProps = Vue.extend({
   props: {
-    name: String
+    cate: String
   }
 })
 @Component
 export default class CateChange extends GreetingProps{
-    type='-';
     selectType(type:string){
         if(type!=='-' && type!=='+'){
             throw new Error('type is unKnow!')
         }
-        this.type = type
-    };
-    @Watch('type')
-    onTypeChanged(val: string) {
-        this.$emit('update',val)
-    }
-
-     
+        this.$emit('update:cate',type)
+    }; 
 }
 </script>
 

@@ -46,6 +46,7 @@ export default class NumberChange extends Vue{
             }
             else if(buttonText==='OK'){
                 this.$emit('update',this.output)
+                this.$emit('submit')
                 window.confirm('提交成功')
             }
             else if(buttonText==='.'){

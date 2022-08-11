@@ -4,8 +4,8 @@
             <div class="changeLayout">
                 <TagChange :tag-item.sync="tags" @update='onUpdateTag'/>
                 <NoteChange @update='onUpdateNote'/>
-                <CateChange @update='onUpdateCate'/>
-                <NumberChange @update='onUpdateNum'/>
+                <CateChange :cate.sync="record.cate"/>
+                <NumberChange @update='onUpdateNum' @submit='submit'/>
             </div>
         </Layout>
     </div>
@@ -35,6 +35,7 @@ type Record = {
 })
 export default class Change extends Vue{
     tags=['衣','食','住','行'];
+    recordList:Record[] = []
     record:Record = {tag:[],node:'',cate:'-',num:0}
     onUpdateTag(tag:string[]){
         this.record.tag = tag
@@ -48,6 +49,11 @@ export default class Change extends Vue{
     onUpdateNum(num:string){
         this.record.num = parseFloat(num)
     };
+    submit(){
+        const records = JSON.parse(JSON.stringify(this.record)) 
+        this.recordList.push(records)
+        window.localStorage.setItem('recordList',JSON.stringify(this.recordList) )
+    }
 
 }
 </script>
