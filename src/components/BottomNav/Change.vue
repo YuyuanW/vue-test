@@ -22,23 +22,26 @@ import NumberChange from '../../views/changeSection/NumberChange.vue'
 
 // import Nav from '@/components/Nav.vue'
 import Component from 'vue-class-component'
+import model from '@/model'
 
-window.localStorage.setItem('version','0.0.1')
-
-type Record = {
+type RecordItem = {
     tag? : string[],
     node : string,
     cate : string,
     num : number,
     time? : Date
 }
+
+window.localStorage.setItem('version','0.0.1')
+
+
 @Component({
     components: { Nav, Layout, TagChange, NoteChange, CateChange, NumberChange }
 })
 export default class Change extends Vue{
     tags=['衣','食','住','行'];
-    recordList:Record[] = JSON.parse(window.localStorage.getItem('recordList') || '[]')
-    record:Record = {tag:[],node:'',cate:'-',num:0}
+    recordList = model.fetch()
+    record:RecordItem = {tag:[],node:'',cate:'-',num:0}
     onUpdateTag(tag:string[]){
         this.record.tag = tag
     };
@@ -52,10 +55,10 @@ export default class Change extends Vue{
         this.record.num = parseFloat(num)
     };
     submit(){
-        const records:Record = JSON.parse(JSON.stringify(this.record)) 
+        const records:RecordItem = model.clone(this.record)
         records.time = new Date()
         this.recordList.push(records)
-        window.localStorage.setItem('recordList',JSON.stringify(this.recordList) )
+        model.save(this.recordList)
     }
 
 }
@@ -69,3 +72,5 @@ export default class Change extends Vue{
         flex-direction: column;
     }
 </style>
+
+

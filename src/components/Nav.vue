@@ -63,10 +63,10 @@ export default Vue.extend({
 
     >.highLight{
       >svg{
-        fill:red;
+        fill:black;
       }
       >p{
-        color:red;
+        color:black;
       }
     }
   }
