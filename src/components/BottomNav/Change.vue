@@ -40,7 +40,7 @@ window.localStorage.setItem('version','0.0.1')
 })
 export default class Change extends Vue{
     tags=['衣','食','住','行'];
-    recordList = model.fetch()
+    recordList:RecordItem[] = model.fetch()
     record:RecordItem = {tag:[],node:'',cate:'-',num:0}
     onUpdateTag(tag:string[]){
         this.record.tag = tag
