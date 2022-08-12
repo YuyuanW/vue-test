@@ -1,6 +1,6 @@
 const localKey = 'tagList'
 type Tag = {
-    id:number,
+    id:string,
     name:string
 }
 type TagType = {
@@ -17,7 +17,7 @@ const tagModel:TagType = {
             window.alert('标签名重复')
             return 
         }else if(name){
-            this.data.push({id:1000,name:name})
+            this.data.push({id:name,name:name})
             this.save()
             window.alert('保存成功')
             return
