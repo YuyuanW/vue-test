@@ -3,7 +3,7 @@
         <Layout>
             <div class="tagLay">
                 <ol>
-                    <li v-for="tag in tags" :key="tag.id"><div class="liStyle"><span>{{tag.name}}</span><Icon iconName="right"></Icon></div></li>
+                    <li v-for="tag in tags" :key="tag.id"><router-link :to="'/tags/editor/'+tag.id"><div class="liStyle"><span>{{tag.name}}</span><Icon iconName="right"></Icon></div></router-link></li>
                     <!-- <li><div class="liStyle"><span>食</span><Icon iconName="right"></Icon></div></li>
                     <li><div class="liStyle"><span>住</span><Icon iconName="right"></Icon></div></li>
                     <li><div class="liStyle"><span>行</span><Icon iconName="right"></Icon></div></li> -->
@@ -65,30 +65,35 @@ export default class Tags extends Vue{
 
             > li{
                 background: #FFFFFF;
-                >.liStyle{
-                    font-family: 'Source Han Sans';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 16px;
-                    line-height: 16px;
-                    /* identical to box height, or 100% */
-                    color: #000000;
-                    
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
+                > a{
+                    text-decoration: none;
+                    color:#000000;
+                    >.liStyle{
+                        font-family: 'Source Han Sans';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 16px;
+                        /* identical to box height, or 100% */
+                        color: #000000;
+                        
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
 
-                    margin-left:16px;
-                    padding:12px 16px 16px 0;
-                    border-bottom:1px solid #C4C3C9;
+                        margin-left:16px;
+                        padding:12px 16px 16px 0;
+                        border-bottom:1px solid #C4C3C9;
 
-                    
-                    > svg{
-                        width:24px;
-                        height:24px;
+                        
+                        > svg{
+                            width:24px;
+                            height:24px;
+                        }
                     }
-                }
+                } 
+                
             }
         }
     }

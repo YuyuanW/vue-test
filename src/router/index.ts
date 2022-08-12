@@ -29,7 +29,7 @@ const routes: Array<RouteConfig> = [
     component:Money
   },
   {
-    path : '/tags/editor',
+    path : '/tags/editor/:id',
     component:TagsEditor
   },
   {
