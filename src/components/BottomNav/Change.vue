@@ -22,7 +22,7 @@ import NumberChange from '../../views/changeSection/NumberChange.vue'
 
 // import Nav from '@/components/Nav.vue'
 import Component from 'vue-class-component'
-import model from '@/model'
+import model from '@/model/changeModel'
 
 type RecordItem = {
     tag? : string[],

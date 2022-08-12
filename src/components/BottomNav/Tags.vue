@@ -3,12 +3,12 @@
         <Layout>
             <div class="tagLay">
                 <ol>
-                    <li><div class="liStyle"><span>衣</span><Icon iconName="right"></Icon></div></li>
-                    <li><div class="liStyle"><span>食</span><Icon iconName="right"></Icon></div></li>
+                    <li v-for="tag in tags" :key="tag"><div class="liStyle"><span>{{tag}}</span><Icon iconName="right"></Icon></div></li>
+                    <!-- <li><div class="liStyle"><span>食</span><Icon iconName="right"></Icon></div></li>
                     <li><div class="liStyle"><span>住</span><Icon iconName="right"></Icon></div></li>
-                    <li><div class="liStyle"><span>行</span><Icon iconName="right"></Icon></div></li>
+                    <li><div class="liStyle"><span>行</span><Icon iconName="right"></Icon></div></li> -->
                 </ol>
-            <button class="addTag">新增标签</button>
+            <button class="addTag" @click="addTag">新增标签</button>
             </div>
         </Layout>
     </div>
@@ -18,10 +18,25 @@ import Vue from 'vue'
 import Nav from '../Nav.vue'
 import Layout from './Layout.vue'
 import Icon from '../Icon.vue';
-export default Vue.extend({
-    name: "Tags",
+
+import tagModel from '@/model/tagModel'
+tagModel.fetch()
+import Component from 'vue-class-component';
+@Component({
     components: { Nav, Layout, Icon }
 })
+
+export default class Tags extends Vue{
+    tags = tagModel.data;
+    addTag(){
+        const tagName = window.prompt('请输入标签名')
+        if(tagName){
+            tagModel.add(tagName) 
+        }else{
+            window.alert('标签名不能为空')
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>

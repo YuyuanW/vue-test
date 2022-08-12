@@ -1,4 +1,7 @@
-declare module "*.svg" {
-    const content: string;
-    export default content;
-  }
+type RecordItem = {
+  tag? : string[],
+  node : string,
+  cate : string,
+  num : number,
+  time? : Date
+}
