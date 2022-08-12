@@ -3,7 +3,7 @@
         <Layout>
             <div class="tagLay">
                 <ol>
-                    <li v-for="tag in tags" :key="tag"><div class="liStyle"><span>{{tag}}</span><Icon iconName="right"></Icon></div></li>
+                    <li v-for="tag in tags" :key="tag.id"><div class="liStyle"><span>{{tag.name}}</span><Icon iconName="right"></Icon></div></li>
                     <!-- <li><div class="liStyle"><span>食</span><Icon iconName="right"></Icon></div></li>
                     <li><div class="liStyle"><span>住</span><Icon iconName="right"></Icon></div></li>
                     <li><div class="liStyle"><span>行</span><Icon iconName="right"></Icon></div></li> -->

@@ -7,6 +7,7 @@ import Money from '@/components/BottomNav/Money.vue';
 import NotFound from '@/components/BottomNav/NotFound.vue';
 // import HomeView from '../views/HomeView.vue'
 import Tags from '@/components/BottomNav/Tags.vue';
+import TagsEditor from '@/views/TagSection/TagsEditor.vue'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,10 @@ const routes: Array<RouteConfig> = [
   {
     path:'/money',
     component:Money
+  },
+  {
+    path : '/tags/editor',
+    component:TagsEditor
   },
   {
     path:'*',
