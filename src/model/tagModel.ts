@@ -6,6 +6,7 @@ type Tag = {
 type TagType = {
     data : Tag[],
     add : (name:string)=>void,
+    edit : (id:string,name:string)=> 'success'|'duplicated'| 'not found',
     fetch : ()=>Tag[],
     save:()=>void,
 }
@@ -25,6 +26,22 @@ const tagModel:TagType = {
             return
         }
         
+    },
+    edit(id:string,name:string){
+        const tag = this.data.filter(t=>t.id===id)[0]
+        if(tag){
+            if(tag.name === name){
+                return 'duplicated'
+            }else{
+                tag.name = name
+                this.save()
+                // window.alert('修改成功')
+                return 'success'
+            }
+        }else{
+            // throw new Error('not found')
+            return 'not found'
+        }
     },
     fetch(){
         this.data =  (JSON.parse(window.localStorage.getItem(localKey) || '[]')) 

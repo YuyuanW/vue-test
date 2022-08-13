@@ -7,7 +7,7 @@
                 <Icon></Icon>
             </div>
             <!-- <NoteChange></NoteChange> -->
-            <Input name="标签名" :node="tag ? tag.name : ''"></Input>
+            <Input name="标签名" :node="tag ? tag.name : ''" @update="editTag"></Input>
             
             <Button>删除标签</Button>
 
@@ -38,9 +38,15 @@ export default class TagsEditor extends Vue{
             this.tag = tag
         }else{
             this.$router.replace('/404')
+        } 
+    }
+    editTag(name:string){
+        if(this.tag){
+            tagModel.edit(this.tag.id,name)
+        }else{
+            throw new Error('unKnow word')
         }
         
-    
     }
     remove(){
 
