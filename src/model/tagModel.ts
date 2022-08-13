@@ -1,3 +1,4 @@
+import createId from '@/lib/idCreator'
 const localKey = 'tagList'
 type Tag = {
     id:string,
@@ -19,7 +20,8 @@ const tagModel:TagType = {
             window.alert('标签名重复')
             return 
         }else if(name){
-            this.data.push({id:name,name:name})
+            const newId = createId() || '0fuck'
+            this.data.push({id:newId,name:name})
             this.save()
             window.alert('保存成功')
             return

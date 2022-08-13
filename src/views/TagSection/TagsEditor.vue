@@ -7,7 +7,7 @@
                 <Icon></Icon>
             </div>
             <!-- <NoteChange></NoteChange> -->
-            <Input name="标签名" :node="tag ? tag.name : ''" @update="editTag"></Input>
+            <Input name="标签名" :node="tag ? tag.name : 'fuck'" @update="editTag"></Input>
             
             <Button @click.native="removeTag">删除标签</Button>
 
@@ -20,10 +20,8 @@
 import tagModel from '@/model/tagModel';
 import Vue from 'vue'
 import Component from 'vue-class-component';
-// import NoteChange from '../changeSection/NoteChange.vue';
 import Input from '@/components/Input.vue'
 import Button from '../../components/Button.vue'
-// import Input from '../../components/BottomNav/Input.vue'
 @Component({
     components: { Input ,Button}
 })
@@ -31,9 +29,12 @@ export default class TagsEditor extends Vue{
     tag?:{id:string,name:string} = undefined;
     created(){
         tagModel.fetch()
-        const id = (this.$route.params.id);
+        const urlId = (this.$route.params.id);
         const tags = tagModel.data
-        const tag = tags.filter(t=>t.id===id)[0] 
+        console.log('tagModel',tags)
+        console.log('urlId',urlId,'type',typeof(urlId))
+
+        const tag = tags.filter(t=>t.id===urlId)[0]
         if(tag){
             this.tag = tag
         }else{

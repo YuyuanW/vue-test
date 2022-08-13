@@ -17,7 +17,7 @@ import Vue from 'vue'
 import Nav from '../Nav.vue'
 import Layout from './Layout.vue'
 import TagChange from '@/views/changeSection/TagChange.vue'
-import NoteChange from '../../views/changeSection/NoteChange.vue'
+// import NoteChange from '../../views/changeSection/NoteChange.vue'
 import CateChange from '../../views/changeSection/CateChange.vue'
 import NumberChange from '../../views/changeSection/NumberChange.vue'
 
