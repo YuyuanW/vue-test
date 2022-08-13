@@ -26,6 +26,8 @@ import Component from 'vue-class-component'
 import model from '@/model/changeModel'
 import Input from '../Input.vue'
 
+import tagModel from '@/model/tagModel'
+
 type RecordItem = {
     tag? : string[],
     node : string,
@@ -35,13 +37,13 @@ type RecordItem = {
 }
 
 window.localStorage.setItem('version','0.0.1')
-
+tagModel.fetch()
 
 @Component({
     components: { Nav, Layout, TagChange, Input, CateChange, NumberChange }
 })
 export default class Change extends Vue{
-    tags=['衣','食','住','行'];
+    tags=tagModel.data;
     recordList:RecordItem[] = model.fetch()
     record:RecordItem = {tag:[],node:'',cate:'-',num:0}
     onUpdateTag(tag:string[]){

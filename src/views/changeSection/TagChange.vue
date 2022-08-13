@@ -1,9 +1,9 @@
 <template>
     <div class="tagChange">
                     <ul class="tagsList">
-                        <li v-for="tag in tagItem" :key="tag" 
-                        :class="{light:light.indexOf(tag)>=0}" 
-                        @click="setLight(tag)" >{{tag}}</li>
+                        <li v-for="tag in tagItem" :key="tag.id" 
+                        :class="{light:light.indexOf(tag.id)>=0}" 
+                        @click="setLight(tag.id)" >{{tag.name}}</li>
                     </ul>
                     <button class="new" @click="addTag">
                         新增标签   
@@ -17,7 +17,7 @@ import Vue from 'vue'
 import Component from 'vue-class-component' 
 const TagProps = Vue.extend({
   props: {
-    tagItem : [Array]
+    tagItem : [Object]
   }
 })
 
@@ -26,12 +26,12 @@ const TagProps = Vue.extend({
 export default class TagChange extends TagProps{
     tagsItem = this.tagItem
     light:string[] = []
-    setLight(tag:string){
-        const index = this.light.indexOf(tag)
+    setLight(tagId:string){
+        const index = this.light.indexOf(tagId)
         if(index>=0){
             this.light.splice(index,1)
         }else{
-            this.light.push(tag)
+            this.light.push(tagId)
         }
         this.$emit('update',this.light)
     }
