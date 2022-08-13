@@ -73,6 +73,10 @@ export default class Change extends Vue{
         display: flex;
         flex-direction: column;
     }
+    .noteChange{
+        padding: 25px 16px;
+    }
+    
 </style>
 
 

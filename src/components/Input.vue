@@ -3,7 +3,8 @@
                     <p class="noteInfo">{{name}}</p>
                     <label class="labelInfo">
                         <input type="text" 
-                        @input="node"
+                        :value="node"
+                        @input="onNodeChanged($event.target.value)"
                         :placeholder="placeHolder"
                         >
                     </label>
@@ -32,8 +33,7 @@ export default class NoteChange extends InputProps{
 
 <style lang="scss" scoped>
 .noteChange{
-        /* border:1px solid yellow; */
-    background: #F5F5F5;
+        background: #F5F5F5;
         display: flex;
         flex-direction: row;
         text-align: center;
@@ -48,7 +48,7 @@ export default class NoteChange extends InputProps{
             line-height: 22px;
             color: #333333;
             margin:0;
-            padding: 25px 16px;
+            padding-right: 16px;
         }
         > .labelInfo{
             /* border:1px solid yellow; */  

@@ -4,9 +4,10 @@
             <div class="eTar">
                 <Icon iconName = 'left'/>
                 <div class="barNote">编辑标签</div>
+                <Icon></Icon>
             </div>
             <!-- <NoteChange></NoteChange> -->
-            <Input name="标签名" :value="tag.name" ></Input>
+            <Input name="标签名" :node="tag ? tag.name : ''"></Input>
             
             <Button>删除标签</Button>
 
@@ -27,7 +28,7 @@ import Button from '../../components/Button.vue'
     components: { Input ,Button}
 })
 export default class TagsEditor extends Vue{
-    tag:{id:string,name:string} = undefined
+    tag?:{id:string,name:string} = undefined;
     created(){
         tagModel.fetch()
         const id = (this.$route.params.id);
@@ -55,23 +56,20 @@ export default class TagsEditor extends Vue{
 .editLay{
     background: #F5F5F5;
     height: 100%;
-    /* position: relative; */
     margin-bottom: 4px;
     display: flex;
     flex-direction: column;
     >.eTar{
-        
-        position:relative;
         background: #FFFFFF;
-        /* border:1px solid red; */
+
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
         
         >svg{
-            float: left;
             margin:16px auto 16px 16px;
         }
         >.barNote{
-            text-align:center;
-            /* border:1px solid red; */
 
             font-family: 'Source Han Sans';
             font-style: normal;
@@ -87,32 +85,11 @@ export default class TagsEditor extends Vue{
     }
     >.noteChange{
         background: #FFFFFF;
+        margin-top:20px;
+        
+        padding: 12px 12px;
+
     }
-    /* >.button{
-        position: absolute;
-        text-align-last: center;
-        width:100%;
-        bottom: 40px;
-        >.removeTag{
-            
-            border:none;
-
-            font-family: 'Source Han Sans';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 17px;
-            line-height: 22px;
-
-            letter-spacing: -0.41px;
-            color: #FFFFFF;
-
-            background: #767676;
-            border-radius: 4px;
-
-            width:fit-content;
-            padding:10px 16px;
-    }
-    } */
     
 }
 
