@@ -31,7 +31,7 @@ import tagModel from '@/model/tagModel'
 type RecordItem = {
     tag? : string[],
     node : string,
-    cate : string,
+    cate : string, 
     num : number,
     time? : Date
 }
@@ -43,11 +43,11 @@ tagModel.fetch()
     components: { Nav, Layout, TagChange, Input, CateChange, NumberChange }
 })
 export default class Change extends Vue{
-    tags=tagModel.data;
+    tags=tagModel.data.map(t=>t.name)
     recordList:RecordItem[] = model.fetch()
     record:RecordItem = {tag:[],node:'',cate:'-',num:0}
     onUpdateTag(tag:string[]){
-        this.record.tag = tag
+        this.record.tag = tag  
     };
     onUpdateNote(node:string){
         this.record.node = node

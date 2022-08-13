@@ -1,9 +1,9 @@
 <template>
     <div class="tagChange">
                     <ul class="tagsList">
-                        <li v-for="tag in tagItem" :key="tag.id" 
-                        :class="{light:light.indexOf(tag.id)>=0}" 
-                        @click="setLight(tag.id)" >{{tag.name}}</li>
+                        <li v-for="tag in tagItem" :key="tag" 
+                        :class="{light:light.indexOf(tag)>=0}" 
+                        @click="setLight(tag)" >{{tag}}</li>
                     </ul>
                     <button class="new" @click="addTag">
                         新增标签   
@@ -13,11 +13,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-
+// import createId from '@/lib/idCreator'
 import Component from 'vue-class-component' 
+import tagModel from '@/model/tagModel'
 const TagProps = Vue.extend({
   props: {
-    tagItem : [Object]
+    tagItem : [String]
   }
 })
 
@@ -36,11 +37,13 @@ export default class TagChange extends TagProps{
         this.$emit('update',this.light)
     }
     addTag(){
-        const tagName = window.prompt('请输入新增标签名：')
+        const tagName = window.prompt('请输入新增标签名：') || ''
         if(tagName === ''){
             window.alert('标签名不能为空')
         }else if(this.tagItem){
-            this.$emit('update:tagItem',[...this.tagItem,tagName])
+            this.$emit('update:tagItem',[...this.tagItem,,tagName])
+            tagModel.add(tagName)
+            location.reload()
         }
         
     }

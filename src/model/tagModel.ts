@@ -1,5 +1,5 @@
 import createId from '@/lib/idCreator'
-const localKey = 'tagList'
+const localKey = 'tagListS'
 type Tag = {
     id:string,
     name:string
