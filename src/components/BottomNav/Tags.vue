@@ -15,7 +15,7 @@
                     <li><div class="liStyle"><span>住</span><Icon iconName="right"></Icon></div></li>
                     <li><div class="liStyle"><span>行</span><Icon iconName="right"></Icon></div></li> -->
                 </ol>
-            <button class="addTag" @click="addTag">新增标签</button>
+                <Button @click.native="addTag">新建标签</Button>
             </div>
         </Layout>
     </div>
@@ -29,8 +29,9 @@ import Icon from '../Icon.vue';
 import tagModel from '@/model/tagModel'
 tagModel.fetch()
 import Component from 'vue-class-component';
+import Button from '../Button.vue';
 @Component({
-    components: { Nav, Layout, Icon }
+    components: { Nav, Layout, Icon ,Button }
 })
 
 export default class Tags extends Vue{
@@ -105,25 +106,6 @@ export default class Tags extends Vue{
         }
     }
     
-    .addTag{
-        border:none;
 
-        font-family: 'Source Han Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 17px;
-        line-height: 22px;
-        /* identical to box height, or 129% */
-        letter-spacing: -0.41px;
-        color: #FFFFFF;
-
-        background: #767676;
-        border-radius: 4px;
-
-        width:fit-content;
-        padding:10px 16px;
-        margin: 20px auto;
-        margin-bottom:40px;
-    }
 
 </style>

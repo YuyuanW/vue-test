@@ -3,8 +3,9 @@
                     <p class="noteInfo">{{name}}</p>
                     <label class="labelInfo">
                         <input type="text" 
-                        v-model="node"
-                        :placeholder="placeHolder">
+                        @input="node"
+                        :placeholder="placeHolder"
+                        >
                     </label>
     </div>
 </template>
@@ -16,12 +17,12 @@ import { Watch } from 'vue-property-decorator';
 const InputProps = Vue.extend({
   props: {
     name: {type:String,default:'标签名'},
-    placeHolder :{type:String,default:'请输入备注'}
+    placeHolder :{type:String,default:'请输入备注'},
+    node !: {type:String,default:''}
   }
 })
 @Component
 export default class NoteChange extends InputProps{
-    node = ''; 
     @Watch('node')
     onNodeChanged(val: string) {
         this.$emit('update',val)

@@ -4,7 +4,7 @@
             <div class="changeLayout">
                 <TagChange :tag-item.sync="tags" @update='onUpdateTag'/>
                 <!-- <NoteChange /> -->
-                <Input name="备注" placeHolder="请输入备注信息" @update='onUpdateNote'/>
+                <Input name="备注" placeHolder="请输入备注信息"  @update='onUpdateNote'/>
                 <CateChange :cate.sync="record.cate"/>
                 <NumberChange @update='onUpdateNum' @submit='submit'/>
             </div>
