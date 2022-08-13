@@ -3,7 +3,8 @@
         <Layout>
             <div class="changeLayout">
                 <TagChange :tag-item.sync="tags" @update='onUpdateTag'/>
-                <NoteChange @update='onUpdateNote'/>
+                <!-- <NoteChange /> -->
+                <Input name="备注" placeHolder="请输入备注信息" @update='onUpdateNote'/>
                 <CateChange :cate.sync="record.cate"/>
                 <NumberChange @update='onUpdateNum' @submit='submit'/>
             </div>
@@ -23,6 +24,7 @@ import NumberChange from '../../views/changeSection/NumberChange.vue'
 // import Nav from '@/components/Nav.vue'
 import Component from 'vue-class-component'
 import model from '@/model/changeModel'
+import Input from '../Input.vue'
 
 type RecordItem = {
     tag? : string[],
@@ -36,7 +38,7 @@ window.localStorage.setItem('version','0.0.1')
 
 
 @Component({
-    components: { Nav, Layout, TagChange, NoteChange, CateChange, NumberChange }
+    components: { Nav, Layout, TagChange, Input, CateChange, NumberChange }
 })
 export default class Change extends Vue{
     tags=['衣','食','住','行'];
