@@ -7,6 +7,7 @@ type TagType = {
     data : Tag[],
     add : (name:string)=>void,
     edit : (id:string,name:string)=> 'success'|'duplicated'| 'not found',
+    remove : (id:string)=>boolean,
     fetch : ()=>Tag[],
     save:()=>void,
 }
@@ -42,6 +43,18 @@ const tagModel:TagType = {
             // throw new Error('not found')
             return 'not found'
         }
+    },
+    remove(id:string){
+        let index = -1
+        for(let i=0;i<this.data.length;i++){
+            if(this.data[i].id === id){
+                index = i
+                break 
+            }
+        }
+        this.data.splice(index,1)
+        this.save()
+        return true
     },
     fetch(){
         this.data =  (JSON.parse(window.localStorage.getItem(localKey) || '[]')) 

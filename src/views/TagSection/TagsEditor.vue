@@ -2,14 +2,14 @@
     <Layout>
         <div class="editLay">
             <div class="eTar">
-                <Icon iconName = 'left'/>
+                <Icon iconName = 'left' @click.native='back'/>
                 <div class="barNote">编辑标签</div>
                 <Icon></Icon>
             </div>
             <!-- <NoteChange></NoteChange> -->
             <Input name="标签名" :node="tag ? tag.name : ''" @update="editTag"></Input>
             
-            <Button>删除标签</Button>
+            <Button @click.native="removeTag">删除标签</Button>
 
             
         </div>
@@ -48,11 +48,19 @@ export default class TagsEditor extends Vue{
         }
         
     }
-    remove(){
+    removeTag(){
+        if(this.tag){
+            if(tagModel.remove(this.tag.id)){
+                window.alert('删除成功')
+                this.$router.back()
+            }
 
+        }else{
+            throw new Error('unKnow word')
+        } 
     }
-    onUpdateNote(){
-        console.log('hi')
+    back(){
+        this.$router.back()
     }
     
 }
