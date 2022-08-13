@@ -6,7 +6,11 @@
                 <div class="barNote">编辑标签</div>
             </div>
             <!-- <NoteChange></NoteChange> -->
-            <Input name="标签名" ></Input>
+            <Input name="标签名" placeHolder="yi"></Input>
+            <div class="button">
+                <button class="removeTag" @click="remove">删除标签</button>
+            </div>
+            
         </div>
     </Layout>
 </template>
@@ -35,6 +39,9 @@ export default class TagsEditor extends Vue{
         
     
     }
+    remove(){
+
+    }
     onUpdateNote(){
         console.log('hi')
     }
@@ -46,7 +53,10 @@ export default class TagsEditor extends Vue{
 .editLay{
     background: #F5F5F5;
     height: 100%;
+    position: relative;
+    margin-bottom: 4px;
     >.eTar{
+        
         position:relative;
         background: #FFFFFF;
         /* border:1px solid red; */
@@ -71,6 +81,35 @@ export default class TagsEditor extends Vue{
 
         }
     }
+    >.noteChange{
+        background: #FFFFFF;
+    }
+    >.button{
+        position: absolute;
+        text-align-last: center;
+        width:100%;
+        bottom: 40px;
+        >.removeTag{
+            
+            border:none;
+
+            font-family: 'Source Han Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 22px;
+            /* identical to box height, or 129% */
+            letter-spacing: -0.41px;
+            color: #FFFFFF;
+
+            background: #767676;
+            border-radius: 4px;
+
+            width:fit-content;
+            padding:10px 16px;
+    }
+    }
+    
 }
 
 
