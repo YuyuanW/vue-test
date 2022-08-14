@@ -7,6 +7,7 @@
                 <Input name="备注" placeHolder="请输入备注信息"  @update='onUpdateNote'/>
                 <CateChange :cate.sync="record.cate"/>
                 <NumberChange @update='onUpdateNum' @submit='submit'/>
+                {{count}}<button @click="$store.commit('increment',1)">+1</button>
             </div>
         </Layout>
     </div>
@@ -25,6 +26,7 @@ import NumberChange from '../../views/changeSection/NumberChange.vue'
 import Component from 'vue-class-component'
 import model from '@/model/changeModel'
 import Input from '../Input.vue'
+import store from '@/store/index'
 
 import tagModel from '@/model/tagModel'
 import { Watch } from 'vue-property-decorator'
@@ -41,12 +43,20 @@ window.localStorage.setItem('version','0.0.1')
 tagModel.fetch()
 
 @Component({
-    components: { Nav, Layout, TagChange, Input, CateChange, NumberChange }
+    components: { Nav, Layout, TagChange, Input, CateChange, NumberChange },
+    computed:{
+        count(){
+            return this.$store.state.count
+        }
+    }
 })
 export default class Change extends Vue{
     tags=tagModel.fetch()
     recordList:RecordItem[] = model.fetch()
     record:RecordItem = {tag:[],node:'',cate:'-',num:0}
+    addCount(){
+        store.commit('increment',1)
+    }
     onUpdateTag(tag:string[]){
         this.record.tag = tag  
     };
