@@ -22,7 +22,11 @@ const TagProps = Vue.extend({
   }
 })
 
-@Component
+@Component({
+    computed:{tagList(){
+        return []
+    }}
+})
 
 export default class TagChange extends TagProps{
     tagsItem = this.tagItem

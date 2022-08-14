@@ -2,12 +2,11 @@
     <div class="changeSection">
         <Layout>
             <div class="changeLayout">
-                <TagChange :tag-item.sync="tags" @update='onUpdateTag'/>
+                <TagChange :tag-item.sync="record.tag" @update='onUpdateTag'/>
                 <!-- <NoteChange /> -->
                 <Input name="备注" placeHolder="请输入备注信息"  @update='onUpdateNote'/>
                 <CateChange :cate.sync="record.cate"/>
-                <NumberChange @update='onUpdateNum' @submit='submit'/>
-                {{count}}<button @click="$store.commit('increment',1)">+1</button>
+                <NumberChange :num.sync = 'record.num' @submit='saveRecord'/>
             </div>
         </Layout>
     </div>
@@ -46,35 +45,22 @@ tagModel.fetch()
     components: { Nav, Layout, TagChange, Input, CateChange, NumberChange },
     computed:{
         count(){
-            return this.$store.state.count
+            return this.$store.state.recordList
+            // return store.state.count
         }
     }
 })
 export default class Change extends Vue{
-    tags=tagModel.fetch()
-    recordList:RecordItem[] = model.fetch()
     record:RecordItem = {tag:[],node:'',cate:'-',num:0}
-    addCount(){
-        store.commit('increment',1)
+    created(){
+        this.$store.commit('initRecordList')
     }
-    onUpdateTag(tag:string[]){
-        this.record.tag = tag  
-    };
     onUpdateNote(node:string){
         this.record.node = node
     };
-    onUpdateCate(cate:string){
-        this.record.cate = cate
-    };
-    onUpdateNum(num:string){
-        this.record.num = parseFloat(num)
-    };
-    submit(){
-        model.create(this.record)
-    };
     @Watch('recordList')
-    onRecordListChange(){
-        model.save()
+    saveRecord(){
+        this.$store.commit('saveRecord',this.record)
     }
     
 
