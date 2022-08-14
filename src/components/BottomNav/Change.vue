@@ -60,9 +60,7 @@ export default class Change extends Vue{
         this.record.num = parseFloat(num)
     };
     submit(){
-        const records:RecordItem = model.clone(this.record)
-        records.time = new Date()
-        this.recordList.push(records)
+        model.create(this.record)
     };
     @Watch('recordList')
     onRecordListChange(){
