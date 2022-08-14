@@ -2,8 +2,8 @@
     <div class="tagChange">
                     <ul class="tagsList">
                         <li v-for="tag in tagItem" :key="tag" 
-                        :class="{light:light.indexOf(tag)>=0}" 
-                        @click="setLight(tag)" >{{tag}}</li>
+                        :class="{light:light.indexOf(tag.id)>=0}" 
+                        @click="setLight(tag.id)" >{{tag.name}}</li>
                     </ul>
                     <button class="new" @click="addTag">
                         新增标签   
@@ -18,7 +18,7 @@ import Component from 'vue-class-component'
 import tagModel from '@/model/tagModel'
 const TagProps = Vue.extend({
   props: {
-    tagItem : [String]
+    tagItem : [Array]
   }
 })
 
@@ -41,7 +41,7 @@ export default class TagChange extends TagProps{
         if(tagName === ''){
             window.alert('标签名不能为空')
         }else if(this.tagItem){
-            this.$emit('update:tagItem',[...this.tagItem,,tagName])
+            this.$emit('update:tagItem',[...this.tagItem,tagName])
             tagModel.add(tagName)
             location.reload()
         }

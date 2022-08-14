@@ -27,6 +27,7 @@ import model from '@/model/changeModel'
 import Input from '../Input.vue'
 
 import tagModel from '@/model/tagModel'
+import { Watch } from 'vue-property-decorator'
 
 type RecordItem = {
     tag? : string[],
@@ -43,7 +44,7 @@ tagModel.fetch()
     components: { Nav, Layout, TagChange, Input, CateChange, NumberChange }
 })
 export default class Change extends Vue{
-    tags=tagModel.data.map(t=>t.name)
+    tags=tagModel.fetch()
     recordList:RecordItem[] = model.fetch()
     record:RecordItem = {tag:[],node:'',cate:'-',num:0}
     onUpdateTag(tag:string[]){
@@ -62,8 +63,12 @@ export default class Change extends Vue{
         const records:RecordItem = model.clone(this.record)
         records.time = new Date()
         this.recordList.push(records)
-        model.save(this.recordList)
+    };
+    @Watch('recordList')
+    onRecordListChange(){
+        model.save()
     }
+    
 
 }
 </script>

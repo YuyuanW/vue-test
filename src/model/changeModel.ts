@@ -1,13 +1,15 @@
 const localKey = 'recordList'
 const changeModel = {
+    data: [] as RecordItem[],
     clone(data:RecordItem|RecordItem[]){
         return  JSON.parse(JSON.stringify(data))
     },
     fetch(){
-        return (JSON.parse(window.localStorage.getItem(localKey) || '[]')) as RecordItem[]
+        this.data = (JSON.parse(window.localStorage.getItem(localKey) || '[]'))
+        return  this.data
     },
-    save(data:RecordItem[]){
-        window.localStorage.setItem(localKey,JSON.stringify(data) )
+    save(){
+        window.localStorage.setItem(localKey,JSON.stringify(this.data) )
     }
 }
 export  default changeModel
