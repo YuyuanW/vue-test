@@ -17,23 +17,25 @@
 </template>
 
 <script lang="ts">
-import tagModel from '@/model/tagModel';
+// import tagModel from '@/model/tagModel';
 import Vue from 'vue'
 import Component from 'vue-class-component';
 import Input from '@/components/Input.vue'
 import Button from '../../components/Button.vue'
 @Component({
-    components: { Input ,Button}
+    components: { Input ,Button},
+    computed:{
+        tags(){
+            this.$store.commit('initTag')
+            return this.$store.state.tagList
+        }
+    }
 })
 export default class TagsEditor extends Vue{
     tag?:{id:string,name:string} = undefined;
     created(){
-        tagModel.fetch()
         const urlId = (this.$route.params.id);
-        const tags = tagModel.data
-        console.log('tagModel',tags)
-        console.log('urlId',urlId,'type',typeof(urlId))
-
+        const tags = this.$store.state.tagList as [{id:string,name:string}] 
         const tag = tags.filter(t=>t.id===urlId)[0]
         if(tag){
             this.tag = tag
@@ -43,7 +45,9 @@ export default class TagsEditor extends Vue{
     }
     editTag(name:string){
         if(this.tag){
-            tagModel.edit(this.tag.id,name)
+            const newTag = {...this.tag,name:name}
+            this.$store.commit('editTag',newTag)
+            // tagModel.edit(this.tag.id,name)
         }else{
             throw new Error('unKnow word')
         }
@@ -51,11 +55,8 @@ export default class TagsEditor extends Vue{
     }
     removeTag(){
         if(this.tag){
-            if(tagModel.remove(this.tag.id)){
-                window.alert('删除成功')
-                this.$router.back()
-            }
-
+            this.$store.commit('removeTag',this.tag.id)
+            this.$router.back()
         }else{
             throw new Error('unKnow word')
         } 

@@ -50,6 +50,35 @@ const store =  new Vuex.Store({
             return 'unKnow tag'
         }
     },
+    editTag(state,newTag:{id:string,name:string}){
+      const tag = state.tagList.filter(t=>t.id===newTag.id)[0]
+      if(tag){
+          if(tag.name === newTag.name){
+              return 'duplicated'
+          }else{
+              tag.name = newTag.name
+              store.commit('saveTag')
+              // window.alert('修改成功')
+              return 'success'
+          }
+      }else{
+          // throw new Error('not found')
+          return 'not found'
+      }
+    },
+    removeTag(state,id){
+      let index = -1
+        for(let i=0;i<state.tagList.length;i++){
+            if(state.tagList[i].id === id){
+                index = i
+                break 
+            }
+        }
+        state.tagList.splice(index,1)
+        store.commit('saveTag')
+        window.alert('删除成功')
+        return true
+    },
     saveTag(state){
       window.localStorage.setItem(localKey02,JSON.stringify(state.tagList) )
     }
