@@ -26,20 +26,26 @@ import Nav from '../Nav.vue'
 import Layout from './Layout.vue'
 import Icon from '../Icon.vue';
 
-import tagModel from '@/model/tagModel'
-tagModel.fetch()
+// import tagModel from '@/model/tagModel'
+// tagModel.fetch()
 import Component from 'vue-class-component';
 import Button from '../Button.vue';
+
 @Component({
-    components: { Nav, Layout, Icon ,Button }
+    components: { Nav, Layout, Icon ,Button },
+    computed:{
+        tags(){
+            this.$store.commit('initTag')
+            return this.$store.state.tagList
+        }
+    }
 })
 
 export default class Tags extends Vue{
-    tags = tagModel.data;
     addTag(){
         const tagName = window.prompt('请输入标签名')
         if(tagName){
-            tagModel.add(tagName) 
+            this.$store.commit('addTag',tagName)
         }else{
             window.alert('标签名不能为空')
         }
