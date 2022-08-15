@@ -2,7 +2,7 @@
     <div class="changeSection">
         <Layout>
             <div class="changeLayout">
-                <TagChange :tag-item.sync="record.tag" @update='onUpdateTag'/>
+                <TagChange :tag.sync="record.tag"/>
                 <!-- <NoteChange /> -->
                 <Input name="备注" placeHolder="请输入备注信息"  @update='onUpdateNote'/>
                 <CateChange :cate.sync="record.cate"/>
@@ -44,7 +44,7 @@ tagModel.fetch()
 @Component({
     components: { Nav, Layout, TagChange, Input, CateChange, NumberChange },
     computed:{
-        count(){
+        recordList(){
             return this.$store.state.recordList
             // return store.state.count
         }
@@ -58,9 +58,9 @@ export default class Change extends Vue{
     onUpdateNote(node:string){
         this.record.node = node
     };
-    @Watch('recordList')
     saveRecord(){
-        this.$store.commit('saveRecord',this.record)
+        // console.log(this.record.tag)
+        this.$store.commit('createRecord',this.record)  
     }
     
 
