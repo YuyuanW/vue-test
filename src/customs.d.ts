@@ -1,6 +1,6 @@
 
 type RecordItem = {
-    tag? : string[],
+    tag? : {id:string,name:string}[],
     node : string,
     cate : string,
     num : number,

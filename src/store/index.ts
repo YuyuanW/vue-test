@@ -30,6 +30,7 @@ const store =  new Vuex.Store({
     saveRecord(state){
       // console.log('fuck')
       window.localStorage.setItem(localKey01,JSON.stringify(state.recordList) )
+      window.location.reload()
     },
     initTag(state){
       const data =  (JSON.parse(window.localStorage.getItem(localKey02) || '[]')) 

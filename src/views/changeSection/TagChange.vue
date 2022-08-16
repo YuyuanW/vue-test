@@ -3,7 +3,7 @@
                     <ul class="tagsList">
                         <li v-for="tag in tagList" :key="tag.id" 
                         :class="{light:light.indexOf(tag.id)>=0}" 
-                        @click="setLight(tag.id)" >{{tag.name}}</li>
+                        @click="setLight(tag.id,tag.name)" >{{tag.name}}</li>
                     </ul>
                     <button class="new" @click="addTag">
                         新增标签  
@@ -33,16 +33,27 @@ import Component from 'vue-class-component'
 
 export default class TagChange extends Vue{
     // tagList:[{id:string,name:string}] =  tagList  
-
+    get tagList(){
+        this.$store.commit('initTag')
+        return this.$store.state.tagList
+    }
     light:string[] = []
-    setLight(tagId:string){
+    setLight(tagId:string,tagName:string){
         const index = this.light.indexOf(tagId)
         if(index>=0){
             this.light.splice(index,1)
         }else{
             this.light.push(tagId)
         }
-        this.$emit('update:tag',this.light)
+        const nameList:string[] = []
+        for(let i=0;i<this.light.length;i++){
+            for(let j=0;j<this.tagList.length;j++){
+                if(this.light[i] === this.tagList[j].id){
+                    nameList.push(this.tagList[j].name)
+                }
+            }
+        }
+        this.$emit('update:tag',{id:this.light,name:nameList})
     }
     addTag(){
         const tagName = window.prompt('请输入新增标签名：') || ''
