@@ -4,5 +4,5 @@ type RecordItem = {
     node : string,
     cate : string,
     num : number,
-    time? : Date
+    time? : Date | string
 }
